@@ -2,19 +2,48 @@
 
 namespace OopDers2
 {
-    class Program
+    class Matris
     {
-        private int [,] _Data { get; set; }
-        public Program(int[,] data)
+        private readonly int[,] _Data;
+
+        public int N { get; set; }
+        public Matris(int n = 3)
         {
-             for(int i= 0; i< _Data.GetLength(0); i++)
+            _Data = new int[n, n];
+             for(int i= 0; i< N; i++)
             {
-                for(int j=0; j<_Data.GetLength(1); i++)
+                for(int j=0; j<N; i++)
                 {
-                    _Data[i, j] = data[i, j];
+                    _Data[i, j] = new Random().Next(0, 9);
                 }
             }
         }
+        public override string ToString()
+        {
+            Console.WriteLine();
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; i++)
+                {
+                    Console.WriteLine($"{_Data[i,j],-3}");
+                }
+                Console.WriteLine(); ;
+            }
+            Console.WriteLine();
+            return "";
+        }
        
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Matris mat = new Matris();
+            mat.ToString();
+            Activator.CreateInstance(typeof(Matris), null);
+            Console.ReadKey();
+
+        }
+
     }
 }
